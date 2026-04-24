@@ -1,0 +1,363 @@
+:root {
+  --app-bg:
+    radial-gradient(circle at top left, rgba(255, 188, 117, 0.32), transparent 36%),
+    radial-gradient(circle at top right, rgba(88, 175, 160, 0.22), transparent 34%),
+    linear-gradient(180deg, #fdf8f2 0%, #f6f4ef 100%);
+  --app-chrome-bg: rgba(253, 248, 242, 0.92);
+  --app-chrome-border: rgba(41, 74, 68, 0.08);
+  --surface-border: rgba(41, 74, 68, 0.08);
+  --surface-shadow: 0 18px 40px rgba(40, 63, 58, 0.08);
+  --surface-card-bg: rgba(255, 255, 255, 0.82);
+  --text-main: #17302a;
+  --page-hero-bg:
+    radial-gradient(circle at top right, rgba(255, 181, 112, 0.22), transparent 24%),
+    linear-gradient(135deg, rgba(232, 248, 244, 0.98), rgba(255, 247, 235, 0.96));
+  --page-hero-border: rgba(41, 74, 68, 0.1);
+  --page-hero-accent: rgba(67, 171, 149, 0.12);
+  --home-summary-card-bg:
+    radial-gradient(circle at top right, rgba(255, 190, 123, 0.18), transparent 24%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 248, 0.84));
+  --home-summary-panel-bg: rgba(244, 248, 246, 0.92);
+  --home-summary-panel-border: rgba(41, 74, 68, 0.1);
+  --action-tile-hover-border: rgba(42, 145, 126, 0.28);
+  --action-tile-hover-bg:
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.1), transparent 28%),
+    rgba(255, 255, 255, 0.94);
+  --nav-muted: rgba(23, 48, 42, 0.7);
+  --nav-active-bg: rgba(67, 171, 149, 0.14);
+  --nav-active-color: #17302a;
+  --mini-photo-bg: linear-gradient(135deg, #f1f6f3, #fff8ef);
+  --mini-photo-border: rgba(41, 74, 68, 0.08);
+  --quick-add-card-bg: rgba(255, 255, 255, 0.86);
+  --quick-add-card-border: rgba(41, 74, 68, 0.08);
+  --quick-add-card-active-border: rgba(42, 145, 126, 0.36);
+  --quick-add-card-active-bg:
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.12), transparent 28%),
+    rgba(255, 255, 255, 0.94);
+  --quick-add-media-bg:
+    linear-gradient(135deg, rgba(236, 246, 243, 0.96), rgba(255, 247, 235, 0.92));
+  --quick-add-media-border: rgba(41, 74, 68, 0.08);
+  --quick-add-amount-bg:
+    radial-gradient(circle at top right, rgba(255, 188, 117, 0.2), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 248, 0.9));
+  --quick-add-footer-bg: rgba(253, 248, 242, 0.94);
+  --quick-add-footer-border: rgba(41, 74, 68, 0.08);
+  --quick-add-footer-shadow: 0 14px 34px rgba(23, 48, 42, 0.12);
+  --theme-option-active-border: rgba(42, 145, 126, 0.32);
+  --theme-option-active-bg:
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.12), transparent 28%),
+    rgba(255, 255, 255, 0.94);
+}
+
+[data-mantine-color-scheme="dark"] {
+  --app-bg:
+    radial-gradient(circle at top left, rgba(255, 166, 77, 0.16), transparent 34%),
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.12), transparent 34%),
+    linear-gradient(180deg, #0f1716 0%, #121d1b 100%);
+  --app-chrome-bg: rgba(15, 23, 22, 0.86);
+  --app-chrome-border: rgba(141, 173, 166, 0.12);
+  --surface-border: rgba(141, 173, 166, 0.16);
+  --surface-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  --surface-card-bg: rgba(18, 29, 27, 0.82);
+  --text-main: #ebf4f2;
+  --page-hero-bg:
+    radial-gradient(circle at top right, rgba(255, 166, 77, 0.12), transparent 28%),
+    linear-gradient(135deg, rgba(22, 35, 32, 0.98), rgba(17, 27, 25, 0.96));
+  --page-hero-border: rgba(141, 173, 166, 0.16);
+  --page-hero-accent: rgba(67, 171, 149, 0.16);
+  --home-summary-card-bg:
+    radial-gradient(circle at top right, rgba(255, 166, 77, 0.14), transparent 26%),
+    linear-gradient(135deg, rgba(20, 33, 30, 0.94), rgba(16, 25, 24, 0.88));
+  --home-summary-panel-bg: rgba(23, 35, 33, 0.92);
+  --home-summary-panel-border: rgba(141, 173, 166, 0.14);
+  --action-tile-hover-border: rgba(67, 171, 149, 0.34);
+  --action-tile-hover-bg:
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.14), transparent 28%),
+    rgba(22, 35, 32, 0.96);
+  --nav-muted: rgba(235, 244, 242, 0.7);
+  --nav-active-bg: rgba(67, 171, 149, 0.2);
+  --nav-active-color: #f4fbf8;
+  --mini-photo-bg: linear-gradient(135deg, #1f2e2b, #182321);
+  --mini-photo-border: rgba(141, 173, 166, 0.14);
+  --quick-add-card-bg: rgba(20, 33, 30, 0.9);
+  --quick-add-card-border: rgba(141, 173, 166, 0.14);
+  --quick-add-card-active-border: rgba(67, 171, 149, 0.36);
+  --quick-add-card-active-bg:
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.16), transparent 28%),
+    rgba(22, 35, 32, 0.96);
+  --quick-add-media-bg:
+    linear-gradient(135deg, rgba(28, 44, 40, 0.94), rgba(34, 41, 33, 0.88));
+  --quick-add-media-border: rgba(141, 173, 166, 0.16);
+  --quick-add-amount-bg:
+    radial-gradient(circle at top right, rgba(255, 166, 77, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(22, 35, 32, 0.96), rgba(17, 27, 25, 0.92));
+  --quick-add-footer-bg: rgba(14, 22, 21, 0.92);
+  --quick-add-footer-border: rgba(141, 173, 166, 0.14);
+  --quick-add-footer-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  --theme-option-active-border: rgba(67, 171, 149, 0.38);
+  --theme-option-active-bg:
+    radial-gradient(circle at top right, rgba(67, 171, 149, 0.16), transparent 28%),
+    rgba(22, 35, 32, 0.96);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--text-main);
+  font-family: var(--font-body), sans-serif;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-header,
+.app-footer {
+  background: var(--app-chrome-bg);
+  backdrop-filter: blur(18px);
+  border-color: var(--app-chrome-border);
+}
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--page-hero-bg);
+  border-color: var(--page-hero-border);
+  box-shadow: var(--surface-shadow);
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -80px -80px auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: var(--page-hero-accent);
+}
+
+.surface-card {
+  background: var(--surface-card-bg);
+  backdrop-filter: blur(18px);
+  border-color: var(--surface-border);
+  box-shadow: var(--surface-shadow);
+}
+
+.empty-state-card .mantine-Button-root,
+.screen-section-action {
+  width: 100%;
+}
+
+.flash-toast-shell {
+  position: fixed;
+  left: 50%;
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  width: min(calc(100vw - 24px), 420px);
+  z-index: 400;
+  pointer-events: none;
+}
+
+.flash-toast {
+  pointer-events: auto;
+  box-shadow: 0 18px 36px rgba(23, 48, 42, 0.14);
+}
+
+.metric-card {
+  min-height: 188px;
+}
+
+.home-summary-card {
+  background: var(--home-summary-card-bg);
+}
+
+.home-summary-panel {
+  background: var(--home-summary-panel-bg);
+  border-color: var(--home-summary-panel-border);
+}
+
+.home-action-button {
+  min-height: 56px;
+}
+
+.action-tile-link {
+  display: block;
+  width: 100%;
+}
+
+.action-tile-card {
+  height: 100%;
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    background 120ms ease;
+}
+
+.action-tile-link:hover .action-tile-card,
+.action-tile-link:focus-visible .action-tile-card {
+  transform: translateY(-1px);
+  border-color: var(--action-tile-hover-border);
+  background: var(--action-tile-hover-bg);
+}
+
+.side-nav-link {
+  border-radius: 20px;
+}
+
+.bottom-nav-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  border-radius: 20px;
+  color: var(--nav-muted);
+}
+
+.bottom-nav-button[data-active="true"] {
+  background: var(--nav-active-bg);
+  color: var(--nav-active-color);
+}
+
+.mini-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--mini-photo-bg);
+  border: 1px solid var(--mini-photo-border);
+}
+
+.page-main-stack {
+  gap: 1.25rem;
+  padding-bottom: 5.5rem;
+}
+
+.quick-add-screen {
+  padding-bottom: 11rem;
+}
+
+.quick-add-choice-card {
+  width: 100%;
+  border-radius: 28px;
+  padding: 1rem;
+  text-align: left;
+  background: var(--quick-add-card-bg);
+  border: 1px solid var(--quick-add-card-border);
+  box-shadow: var(--surface-shadow);
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    background 120ms ease;
+}
+
+.quick-add-choice-card[data-active="true"] {
+  transform: translateY(-1px);
+  border-color: var(--quick-add-card-active-border);
+  background: var(--quick-add-card-active-bg);
+}
+
+.quick-add-choice-media {
+  width: 84px;
+  min-width: 84px;
+  height: 84px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--quick-add-media-bg);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--quick-add-media-border);
+  overflow: hidden;
+}
+
+.quick-add-amount-card {
+  background: var(--quick-add-amount-bg);
+}
+
+.quick-add-currency {
+  font-size: clamp(2.2rem, 11vw, 3.4rem);
+  line-height: 1;
+}
+
+.quick-add-amount-input {
+  flex: 1;
+}
+
+.quick-add-footer {
+  position: sticky;
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  background: var(--quick-add-footer-bg);
+  backdrop-filter: blur(18px);
+  border-color: var(--quick-add-footer-border);
+  box-shadow: var(--quick-add-footer-shadow);
+  z-index: 10;
+}
+
+.theme-option-button {
+  display: block;
+  width: 100%;
+}
+
+.theme-option-card {
+  height: 100%;
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    background 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.theme-option-button:hover .theme-option-card,
+.theme-option-button:focus-visible .theme-option-card,
+.theme-option-button[data-active="true"] .theme-option-card {
+  transform: translateY(-1px);
+  border-color: var(--theme-option-active-border);
+  background: var(--theme-option-active-bg);
+}
+
+@media (min-width: 48em) {
+  .empty-state-card .mantine-Button-root,
+  .screen-section-action {
+    width: auto;
+  }
+
+  .flash-toast-shell {
+    left: auto;
+    right: 24px;
+    top: 24px;
+    bottom: auto;
+    transform: none;
+    width: min(360px, calc(100vw - 48px));
+  }
+
+  .page-main-stack {
+    gap: 2rem;
+    padding-bottom: 6rem;
+  }
+
+  .quick-add-screen {
+    padding-bottom: 9rem;
+  }
+
+  .quick-add-choice-card {
+    padding: 1.1rem;
+  }
+
+  .quick-add-footer {
+    bottom: 24px;
+  }
+}
