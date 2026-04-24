@@ -23,6 +23,7 @@ Een mobile-first webapp om kosten, ritten, onderhoud en visuele herkenning van j
 
 - `GitHub Actions` bouwt en publiceert de app-image
 - `Portainer` gebruikt `compose.deploy.yaml`
+- de webapp bindt standaard op `127.0.0.1:6000`, bedoeld voor reverse proxy via `Caddy`
 - dezelfde image draait zowel `migrate` als `app`
 - `Postgres` draait als eigen container met persistente opslag
 - uploads worden buiten de image bewaard via een persistente mount op `/app/storage/uploads`
