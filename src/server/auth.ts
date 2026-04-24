@@ -1,7 +1,7 @@
 import { createHash, randomBytes, scrypt as scryptCallback, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { ThemePreference, isThemePreference } from "@/lib/theme-preference";
@@ -77,13 +77,71 @@ function isUniqueViolation(error: unknown): error is PgErrorLike {
   return typeof error === "object" && error !== null && "code" in error && (error as PgErrorLike).code === "23505";
 }
 
+function parseBooleanEnv(value: string | undefined) {
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  const normalized = value.trim().toLowerCase();
+
+  if (!normalized) {
+    return undefined;
+  }
+
+  if (["1", "true", "yes", "on"].includes(normalized)) {
+    return true;
+  }
+
+  if (["0", "false", "no", "off"].includes(normalized)) {
+    return false;
+  }
+
+  return undefined;
+}
+
+async function shouldUseSecureCookies() {
+  const forced = parseBooleanEnv(process.env.AUTH_COOKIE_SECURE);
+
+  if (typeof forced === "boolean") {
+    return forced;
+  }
+
+  const headerStore = await headers();
+  const forwardedProto = headerStore
+    .get("x-forwarded-proto")
+    ?.split(",")[0]
+    ?.trim()
+    .toLowerCase();
+
+  if (forwardedProto === "https") {
+    return true;
+  }
+
+  if (forwardedProto === "http") {
+    return false;
+  }
+
+  const origin = headerStore.get("origin");
+
+  if (origin) {
+    try {
+      return new URL(origin).protocol === "https:";
+    } catch {
+      // Ignore malformed origin headers and fall back to environment defaults.
+    }
+  }
+
+  return process.env.NODE_ENV === "production";
+}
+
 async function setSessionCookie(token: string, expiresAt: Date) {
   const cookieStore = await cookies();
+  const secure = await shouldUseSecureCookies();
 
   cookieStore.set(SESSION_COOKIE_NAME, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure,
     path: "/",
     expires: expiresAt,
   });
@@ -91,11 +149,12 @@ async function setSessionCookie(token: string, expiresAt: Date) {
 
 export async function setThemePreferenceCookie(themePreference: ThemePreference, expiresAt: Date) {
   const cookieStore = await cookies();
+  const secure = await shouldUseSecureCookies();
 
   cookieStore.set(THEME_PREFERENCE_COOKIE_NAME, themePreference, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure,
     path: "/",
     expires: expiresAt,
   });
@@ -103,10 +162,11 @@ export async function setThemePreferenceCookie(themePreference: ThemePreference,
 
 export async function clearSessionCookie() {
   const cookieStore = await cookies();
+  const secure = await shouldUseSecureCookies();
   cookieStore.set(SESSION_COOKIE_NAME, "", {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure,
     path: "/",
     expires: new Date(0),
   });
@@ -114,10 +174,11 @@ export async function clearSessionCookie() {
 
 export async function clearThemePreferenceCookie() {
   const cookieStore = await cookies();
+  const secure = await shouldUseSecureCookies();
   cookieStore.set(THEME_PREFERENCE_COOKIE_NAME, "", {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure,
     path: "/",
     expires: new Date(0),
   });
